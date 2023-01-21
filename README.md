@@ -24,3 +24,4 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 - nice frontend 
 - add memory to the chatbot to have a conversationla feature
 - local GPT-2
+- use free embedding model

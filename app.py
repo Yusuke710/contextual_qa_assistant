@@ -1,6 +1,7 @@
 # code based from https://github.com/jerryjliu/gpt_index
 
 from gpt_index import GPTSimpleVectorIndex, SimpleDirectoryReader
+from gpt_index.indices.prompt_helper import PromptHelper
 import os
 
 from flask import Flask, request, render_template
@@ -17,12 +18,22 @@ class chatbot():
         else:
             # read the data and embed into index
             self.documents = SimpleDirectoryReader('data').load_data()
-            self.index = GPTSimpleVectorIndex(self.documents)
+            self.index = GPTSimpleVectorIndex(
+                documents = self.documents,
+                #embed_model=embed_model,  # embedding model to use 
+                prompt_helper=PromptHelper(
+                    max_input_size=3500,  # LLM max input token length
+                    num_output=500,  # LLM output token length
+                    chunk_size_limit=500,  # number of tokens per embedding
+                    max_chunk_overlap=30
+                    ),
+                verbose=True
+                )
             # save to disk
             self.index.save_to_disk(self.index_file)
     
     def query(self, user_input):
-        return self.index.query(user_input)
+        return self.index.query(user_input, verbose=True)
 
 bot = chatbot()        
 
