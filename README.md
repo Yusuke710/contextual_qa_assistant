@@ -9,7 +9,7 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 3. Put your data files into the directory /data for chatbot to read
 
 ## commands to run 
-- `export OPENAI_API_KEY=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`
+- `export OPENAI_API_KEY=<your_key>`
 - `python app.py`
 - browse to http://127.0.0.1:5000 
 
