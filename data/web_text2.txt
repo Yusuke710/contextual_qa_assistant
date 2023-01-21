@@ -1,0 +1,214 @@
+🎉Tips for Specific Roles 🎉
+Marketing
+Industry
+Outreach
+Deep Learning & HPC
+Law & Ethics
+What is the Process of Recruitment?
+
+Recruitment usually begins in O-Week and finishes around Week 3. In this time, you need to submit a formal application through our ‘Join Us’ tab or through our Facebook page.
+
+    If successful, you will receive an email and invited to an interview. Applications are read on a rolling basis so interviews are held from the beginning of the Recruitment (O-Week) to around Week 5. 
+
+    Then if you are successful, you will be invited onto the team. From there you will begin formal training which will run from around Week 5 to Week 7. It will consist of workshops that taking from the basics to creating your project.
+
+    Then you are part of the team! In the following project season you will begin your project!
+
+When is Recruitment Open?
+
+Recruitment runs twice a year. At the beginning of each university semester. Follow us on our Facebook to be the first to know about recruitment!
+
+If you have missed out, pop your name down on the Expression of Interest on our Join Us page.
+
+
+Do you have a deep learning project in mind and want to collaborate with university students? 
+
+Monash DeepNeuron’s (MDN) Deep Learning Branch is frequently looking for projects that would allow our members to up-skill themselves through deep learning applications, proof of concepts and research projects!
+
+Our current DL projects are filled with five to six MDN student members who commit a maximum of 10 hours per week towards a project. We work on projects of all levels of difficulties, starting from 2nd year university level up to Honours. Projects require regular weekly meetings and some work alongside researchers and academics for support and guidance.
+
+We are looking for projects with a duration of 6 - 18 months. Projects generally have 3-5 members, including a project manager.
+
+To get a better idea of the projects that we are currently running, click here. (link to current DL project page)
+Submit your project application here and we will get in touch with you:
+PROJECT APPLICATION
+Semester 1 2022 Key Dates:
+
+    Application Submission Deadline: 11:59pm Monday 11th July 2022
+
+    You will hear back from us in regards to your application by 11:59pm Monday 18th July 2022 and you will be invited to a meeting with the DL management team for further discussion.
+
+    Project start date: Monday 25th July 2022
+
+
+DEEP LEARNING PROJECTS
+Bioacoustic Monitoring
+
+The bioacoustic monitoring project runs under the supervision of Bernd Meyer of Monash’s Department of Data Science & AI. The project aims to use AI techniques to help researchers track the health of our ecosystem by monitoring recorded bioacoustics data in the wild. The ‘monitoring’ part is often tedious, as experts need to manually comb through hours of audio to identify and tag the animals they hear. This is where we come in! We focus on sound event classification and detection models that would help researchers to detect whenever an animal’s sounds occur and identify which animals it belongs to. This would allow the researchers to work on more meaningful yet smaller manageable chunks instead of the long audio recorded from nature.
+HRI Collaboration
+
+In collaboration with Dr. Wesley Chan and Dr. Pamela Carreno-Medrano from the electrical engineering department, the HRI project aims to handle the issue of crowd navigation for robots to perform critical tasks such as package deliveries or hospital assistance. The aim is to have an agent navigate through a crowd without getting lost or colliding with anyone, but also behave in a socially confirmative way such that the robot moves in a predictable way to avoid making humans stop, slow down, or alter their intended path of travel. The agent would have to learn to keep to the left (in Australia), yield to other pedestrians, avoid cutting through groups of people and a wide variety of other behaviours that humans take for granted but are hard to describe in words.
+Generative Art with Diffusion Models
+
+Generative deep learning models look at learning data distributions to be able to reconstruct similar types of data from scratch. Generative art aims to explore and utilise generative models to create new art, generating abstract paintings or even Pokémon! Generative Adversarial Networks (GANs) are the most traditional and well-known types of generative models. However, a relatively newer class of generative models called diffusion models have shown great promise and has been rising in popularity. 
+l2rpn.PNG
+L2RPN
+
+As power networks play a pivotal role in maintaining our modern, technologically fueled society, the task of balancing the grid has become increasingly complex. The grid has evolved from almost entirely fossil fuel-based power generation to a wide variety of energy sources such as nuclear energy and renewables like wind and solar energy. Power Networks have to evolve to handle these varying types of energy sources, account for maintenance work, and more recently, the threat of adversarial attacks, while also handling physical limits of the grid.
+
+The L2RPN (Learning to Run a Power Network Challenge) competition aims to find a solution to the power network operation problem, by promoting AI to address the power network problem. This year’s competition has a focus on both robustness and trust. Our Monash competition team, composed of members from Monash Department of Data Science and Artificial Intelligence and Monash DeepNeuron, aims to combine the fields of Deep Reinforcement Learning and Optimization to create a safe and robust agent.
+
+Interested in partnering with us on future projects? 
+
+Contact us here
+
+
+HIGH-PERFORMANCE COMPUTING Projects
+IndySCC - 2022
+pasted image 0 (3).png
+pasted+image+0+%281%29.jpg
+pasted+image+0+%282%29.jpg
+pasted image 0 (4).png
+pasted image 0 (3).pngpasted+image+0+%281%29.jpgpasted+image+0+%282%29.jpgpasted image 0 (4).png
+
+DeepNeuron will be competing at IndySCC in November 2022 in order to win a place in the Student Cluster Competition (SCC), the world championship competition held at the International Supercomputing Conference.
+
+IndySCC is a High-Performance Computing (HPC) competition with inclusiveness and education of competitors in mind. It aims to reduce the barrier to entering HPC competitions and give all teams the opportunity to compete on equal footing, with the same hardware allocated to each team as well as support and education from HPC experts.
+
+During the competition, teams fight to obtain the greatest performance using a limited power budget on a series of real-world scientific applications, offering the HPC community creative and unique perspectives on how HPC problems can be solved.
+
+Technical Details:
+
+During the competition, the DeepNeuron team will be optimising the following applications for performance:
+
+    NAMD: Nanoscale Molecular Dynamics (NAMD) is a molecular dynamics simulation software that simulates large complex systems of atoms and molecules. It is written using the Charm++ parallel programming model.
+
+    miniVite: miniVite is a proxy application that implements a single phase of Louvain method in distributed memory for graph community detection.
+
+    Mystery Application: At the start of the competition, teams will be given an application and datasets for a mystery application. Students will be expected to build, optimize and run this mystery application all at the competition.
+
+These optimisations will be then measured using the LINPACK benchmark, which is a measure of a computer’s floating-point rate of execution. More details about the benchmark can be found here: https://top500.org/project/linpack/
+Energy HPC
+
+The energy system is at the forefront of efforts to mitigate climate change by integrating sustainable energy resources. With the increasing penetration of renewable generation, planning for operational flexibility along with generation and transmission capacities plays a vital role in ensuring the reliability of the energy system.
+
+The required operational flexibility is typically achieved through gas generators and energy storage systems, such as grid-scale batteries or pumped hydro, as they can respond instantly to rapid variations in renewable generation, preventing load and/or renewable curtailment.
+
+Therefore, it is essential to determine the optimal combination of generation, storage, and transmission investment decisions that meet the demand, renewable energy targets, provide flexibility, and achieve other necessary goals, such as system reliability. This project is contributing to the development of computational methods to determine the most cost-effective way to expand and transform the Australian electricity grid over the coming decades to meet these goals. 
+
+Previous work has developed a detailed generation, transmission, and storage expansion planning model. DeepNeuron is looking to explore how the existing and future models can benefit from distributed computing to scale up to larger problem sizes.
+Connected Vehicles
+
+Connected vehicles is a project which attempts to capture and send live data about a car to the web. This data has a range of applications from self-driving cars to traffic analysis and emissions tracking
+
+DeepNeuron aims to:
+
+    Self-diagnose car dynamics in real-time using OBD (Onboard diagnostics).
+
+    Track cars’ real-time location and interact with nearby cars’ location using Sparkfun GPS tracking.
+
+    Track the live objects that come in the periphery of the car while driving i.e real-time object detection of objects like - Signboards, Animals, Traffic lights, buildings, etc.
+
+Interested in partnering with us on future projects? 
+
+Contact us here
+
+
+PAST Deep learning Projects
+CT Facial Reconstruction
+
+Reconstructing facial features from skeletal remains using CT scans
+
+Identifying skeletal remains is a challenging problem that requires both technical knowledge of bone and face structure as well as creative anatomical artistry. Traditionally this task has been undertaken by trained specialists who spend hours carving or drawing potential faces for criminal investigations, historical explorations, and disaster relief recordings. 
+
+Deep Neuron CT Facial Reconstruction aims to apply generative neural networks to automatically create realistic looking faces from skulls with no human interaction and in real-time. By using a dataset of 3D head CT scans, the team is exploring both 2D and 3D generative deep learning techniques to create a proof of concept.
+Power Fault Detection
+
+Determining the location of electrical failures in the power grid
+
+Current methods of determining the location of faults involve using sensors that only tell which region of the network the fault is or simulating the fault and checking against the true signal which is time-consuming. This project aims to use a machine learning approach to determine the location directly from the signal.
+Microfluidics
+
+Using Deep Learning as a means to improve male fertility outcomes.
+
+Assisted reproductive technologies such as IVF are faced with the challenges of low success rates and high cost. Traditional methods of sperm cell analysis and selection for IVF are costly, time-consuming, and require skillful clinicians who employ non-standardised procedures.
+
+The aim of the microfluidics project is to bring deep learning to the challenge of improving male fertility outcomes, by applying state-of-the-art machine learning technologies to sperm cell analysis and selection. This opens up exciting possibilities to create effective, and highly accurate tools with real-world applications for researchers and clinicians.
+RL Chess
+
+The Chess team aims to develop an agent that would be able to compete at a high level amongst current chess players at Monash and further optimise the agent to the point of grandmaster level.
+
+Since its inception in the 6th century, chess has classically been viewed as a game of intellect, two opponents facing off in a battle of wits. This is why AI researchers have been enamoured with the game since the field’s beginnings. The approach taken involves a recreation of two distinct, well-known papers, AlphaZero and MuZero, to build the team’s intuition regarding general chess engine models at the highest level. The team will then begin to develop it’s own unique architecture for the agent to learn from to achieve our aim.
+
+Interested in partnering with us on future projects? 
+
+Contact us here
+
+
+PAST HPC Projects
+Job Record analysis
+
+The Monash M3 MASSIVE cluster has records of over 20 million jobs that have been submitted by users. Currently stored in a mySQL database it is difficult for a user to look at their past jobs without having to trawl through a wall of text, or extract any meaningful data.
+
+In order to increase productivity of M3 MASSIVE users, we are devising a new way to view job records so that better, more informed decisions can be made when submitting their next job.
+
+Analysing the bulk of these records is more easily achieved on a data analysis platform, which in our case will be NumPy and MatPlotLib on Python. Once exported to a separate program, trends can be drawn on key elements of the data such as computational resources allocated, wall (estimated) time vs actual time, and server traffic. The plan is to provide users with an interactive dashboard containing useful statistics on their usage, how many jobs they have submitted, etc - which may play in tandem with the ‘Monitoring the Cluster’ project.
+
+While time may be limited, there are a plethora of implementations for this project - for instance, implementing machine learning to provide much more accurate estimates for job run time based on computation power necessary. This will increase the efficiency of the MASSIVE cluster and allow for better allocation of resources.
+Horovod
+
+Horovod is a distributed deep learning training framework that makes training models easier and faster. The main goal of this project is to implement Horovod on the Monash HPC cluster MASSIVE, and to develop training and documentation to enable users to easily train their deep learning models. We also aim to help make MASSIVE more accessible for users without technical backgrounds by identifying problem areas and documenting solutions.
+Monitoring the cluster
+
+Monitoring the cluster is a visualisation project to display interesting and important data about the Monash M3 Cluster. The main goal of the project is to provide three tiers of information to different members of the HPC community. The synopsis allows for viewers to consume the detailed and technical information in a comprehensible manner.
+
+Open page
+
+The open page is a landing page that will have interesting information about the server in general. Any person has the ability to access this page and the information displayed will be classified as public.
+
+User page
+
+The user tier will provide specific information about submitted jobs in order for programmers to track their execution times, view server status and be notified when jobs are completed. Users will also be shown their position in the priority queue to understand their wait times.
+
+Devops page
+
+The devops page will provide admins with important user specific information that will allow them to support developers with failing jobs and also monitor excessive use of the M3 cluster.
+
+It is a goal of the project that by making information accessible, users are more easily able to find and fix important issues.
+ASC20-21 STUDENT SUPERCOMPUTER CHALLENGE
+pasted+image+0.png
+pasted+image+0 (1).png
+IMG_3058.jpg
+2.jpeg
+1.png
+3.jpeg
+IMG_3073.jpg
+IMG_3058.jpg2.jpeg1.png3.jpegIMG_3073.jpg
+
+Solving scientific applications fast with High Performance Computing cluster
+
+In ASC, students are required to work with hardware and assemble a HPC cluster that is capable of running a range of scientific applications. These include but are not limited to benchmarks as well as various scientific programs in the domains such as Artificial Intelligence, Quantum computing, and Astronomy. The goal of the team is to run these applications fastest and produce the most accurate results under the power constraint of 3kW.
+
+In 2021, the DeepNeuron HPC team competed virtually at the Southern University of Science and Technology Shenzhen, Guangdong from May 8-12, 2021. The team prepared for the contest by building a real server for use. With the assistance of Dell and Nvidia, they had built a powerful server that was a serious contender in the competition.
+
+We congratulate our team on winning the Application Innovation Award for the Mystery Challenge in ASC ‘21 and First Prize in the virtual contest.
+
+Our team was interviewed by an international journalist, Dan Olds, about the progress of the team and their responsibilities throughout the competition. Find it linked below!
+ASC21-22 STUDENT SUPERCOMPUTER CHALLENGE
+
+In ASC, students are required to work with hardware and assemble a HPC cluster that is capable of running a range of scientific applications. 
+
+These include but are not limited to benchmarks as well as various scientific programs in the domains such as Artificial Intelligence, Quantum computing, and Astronomy. 
+
+The team worked on the problems in the last round of the competition to up-skills themselves for the upcoming competition at the end of the year.
+
+Unfortunatelly, ASC team closed down as there does not seem to be an ASC supercomputing challenge next year. However, students in the ASC team joined the IndySCC team to prepare for the final competition happening on the 6th and 7th of November, 2021. Read about it here.
+DRONE PHOTOGRAMMETRY
+
+Parallelise photogrammetry pipeline 
+
+A point cloud is a 3D visualization made up of thousands or even millions of georeferenced points. A point cloud provides a powerful aid to any industry, business or project that depends on measurements. However, It is computationally challenging to build, analyse and visualise point clouds from raw drone images. 
+
+The goal of this project is to parallelise the photogrammetry pipeline and implement a scalable, cloud based solution for point cloud analysis.
+
+View the end of semester report here.
