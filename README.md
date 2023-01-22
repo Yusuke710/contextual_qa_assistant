@@ -5,6 +5,8 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 1. Install software dependencies
 - flask
 - gpt-index
+- whisper `pip install git+https://github.com/openai/whisper.git`
+
 2. get OpenAI API key from [https://beta.openai.com/account/api-keys](https://beta.openai.com/account/api-keys)
 3. Put your data files into the directory /data for chatbot to read
 

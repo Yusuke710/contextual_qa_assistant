@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DeepNeuron Chatbot</title>
+    <style>
+      /* Add some styling to make the website look nicer */
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+      }
+      .container {
+        width: 50%;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .input-container {
+        display: flex;
+        justify-content: space-between;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+      }
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+      .record-button {
+        float: right;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chatbot</h1>
+      <form action="{{ url_for('handle_response') }}" method="post">
+        <div class="input-container">
+          <input type="text" name="user_input" placeholder="Enter your message here">
+          <button class="record-button" id="record-button">Record</button>
+        </div>
+        <input type="submit" value="Send">
+      </form>
+      <div class="conversation">
+        <p>You: {{ user_input }}</p>
+        <p>Chatbot: {{ response }}</p>
+      </div>
+      <audio id="audio"></audio>
+    </div>
+    <script>
+        var audioCtx;
+        var source;
+        var stream;
+        var recorder;
+        var recordButton = document.getElementById("record-button");
+
+        recordButton.addEventListener("mousedown", startRecording);
+        recordButton.addEventListener("mouseup", stopRecording);
+
+        function startRecording() {
+            // Initialize audio context
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            // Get microphone input
+            navigator.mediaDevices.getUserMedia({ audio: true })
+                .then(function(stream) {
+                    // Create audio source
+                    source = audioCtx.createMediaStreamSource(stream);
+
+                    // Initialize recorder
+                    recorder = new MediaRecorder(source.stream);
+
+                    // Start recording
+                    recorder.start();
+                    console.log('Recording...')
+                })
+                .catch(function(err) {
+                    console.log(err);
+                });
+        }
+
+        function stopRecording() {
+            // Stop recording
+            recorder.stop();
+            console.log('Recording stopped');
+
+            // Handle data available event
+            recorder.addEventListener("dataavailable", function(event) {
+                var audio = document.getElementById("audio");
+                audio.src = URL.createObjectURL(event.data);
+                audio.play();
+
+                // Convert audio to text and send it to the backend
+                process_audio_to_text(audio);
+            });
+        }
+
+        function process_audio_to_text(audio) {
+        // Convert the audio file to a Blob object
+        var blob = new Blob([audio], {type: 'audio/wav'});
+        // Send the audio file to the backend
+        $.ajax({
+            url: '/audio',
+            type: 'POST',
+            data: blob,
+            processData: false,
+            contentType: false
+        }).done(function(response) {
+            console.log(response);
+            // Get the input container element
+            var inputContainer = $(".input-container");
+            // Create a new element to display the response text
+            var responseTextElement = $("<p>").text(response);
+            // Append the response text element to the input container
+            inputContainer.append(responseTextElement);
+          });
+        }
+    </script>
+  </body>
+</html>
