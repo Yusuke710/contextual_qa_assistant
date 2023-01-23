@@ -1,6 +1,7 @@
 from gpt_index import GPTSimpleVectorIndex, SimpleDirectoryReader
 from gpt_index.indices.prompt_helper import PromptHelper
 import os
+from datetime import date
 
 import whisper
 
@@ -25,8 +26,8 @@ class chatbot():
                 prompt_helper=PromptHelper(
                     max_input_size=3500,  # LLM max input token length
                     num_output=500,  # LLM output token length
-                    chunk_size_limit=500,  # number of tokens per embedding
-                    max_chunk_overlap=30
+                    chunk_size_limit=1000,  # number of tokens per embedding
+                    max_chunk_overlap=50
                     ),
                 verbose=True
                 )
@@ -34,7 +35,7 @@ class chatbot():
             self.index.save_to_disk(self.index_file)
     
     def query(self, user_input):
-        return self.index.query(user_input, verbose=True)
+        return self.index.query(user_input, similarity_top_k = 2, verbose=True)
 
 # This class loads whisper as speech2text model and takes audio recording and output a text
 # Based on github repo: https://github.com/amrrs/openai-whisper-webapp
@@ -63,7 +64,7 @@ class speech2text():
 
 
 
-#bot = chatbot()        
+bot = chatbot()        
 audiobot = speech2text()
 
 # flask handles html page setup and handles user input as well as sending response from the chatbot
@@ -76,15 +77,30 @@ def user_prompt():
 # chatbot handles user_input
 @app.route("/response", methods=["POST"])
 def handle_response():
+    # Get the text from the request
     user_input = request.form["user_input"]
+
     # process the user's input and generate a response
-    response = bot.query(user_input)
+    #response = bot.query(user_input)
+    response = 'test test test'
+    print(user_input)
+    print(response)
+
+    # log user input and chatbot's response for future improvement 
+    file_path = "chatlog"
+    filename = date.today()
+    with open(os.path.join(file_path, str(filename) + '.txt'), "a+") as f:
+        f.write(user_input)
+        f.write(str(response))
+        f.write("\n")
+
     return render_template("chatbot.html", user_input=user_input, response=str(response))
 
 # audio process, output of this goes to input column of html to replace placeholder="Enter your message here"
 @app.route("/audio", methods=["POST"])
 def handle_audio():
     # Get the audio file from the request
+    print(request.files["audio"])
     audio_file = request.files["audio"]
 
     # Save the audio file to disk
@@ -99,3 +115,4 @@ def handle_audio():
 
 if __name__ == "__main__":
     app.run()
+
