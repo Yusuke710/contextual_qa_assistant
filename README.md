@@ -6,6 +6,7 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 - flask
 - gpt-index
 - whisper `pip install git+https://github.com/openai/whisper.git`
+- gradio
 
 2. get OpenAI API key from [https://beta.openai.com/account/api-keys](https://beta.openai.com/account/api-keys)
 3. Put your data files into the directory /data for chatbot to read
@@ -19,11 +20,11 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 ![ChatGPT_example](/assets/ChatGPT_example.png)
 ![example](/assets/example.png)
 
+## use gradio for audio input
+![gradio](/assets/assets/audio_example.png)
 
 ## TODO
-- fix web scraping. Same code works on google colab works but not extract_website.py. Maybe versions of software?
-- you need to format beautiful soup for every website :(
-- nice frontend 
-- add memory to the chatbot to have a conversationla feature
+- nice frontend, write js for more flexibility 
 - local GPT-2
 - use free embedding model
+- record conversation for future improvement
