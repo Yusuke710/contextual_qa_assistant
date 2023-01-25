@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
+  <link rel="shortcut icon" href="#">
   <head>
     <title>DeepNeuron Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <style>
       /* Add some styling to make the website look nicer */
       body {
@@ -45,9 +47,14 @@
       input[type="submit"]:hover {
         background-color: #45a049;
       }
-      .record-button {
+      /*
+      .start-button {
         float: right;
       }
+      .stop-button {
+        float: right;
+      }
+      */
     </style>
   </head>
   <body>
@@ -55,85 +62,73 @@
       <h1>Chatbot</h1>
       <form action="{{ url_for('handle_response') }}" method="post">
         <div class="input-container">
-          <input type="text" name="user_input" placeholder="Enter your message here">
-          <button class="record-button" id="record-button">Record</button>
+          <input type="text" name="user_input" id="text_field" placeholder="Enter your message here">
+          
         </div>
         <input type="submit" value="Send">
       </form>
+        <!--<button class="record-button" id="record-button">Record</button>-->
+        <p>
+          <button class="start-button" id="startRecording">Start recording</button>
+          <button class="stop-button" id="stopRecording" disabled>Stop recording</button>
+        </p>
       <div class="conversation">
         <p>You: {{ user_input }}</p>
         <p>Chatbot: {{ response }}</p>
       </div>
-      <audio id="audio"></audio>
+      <!--<audio id="audio"></audio>-->
     </div>
     <script>
-        var audioCtx;
-        var source;
-        var stream;
-        var recorder;
-        var recordButton = document.getElementById("record-button");
+    // https://github.com/duketemon/web-speech-recorder
+        navigator
+        .mediaDevices
+        .getUserMedia({audio: true})
+        .then(stream => { handlerFunction(stream) });
 
-        recordButton.addEventListener("mousedown", startRecording);
-        recordButton.addEventListener("mouseup", stopRecording);
-
-        function startRecording() {
-            // Initialize audio context
-            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-            // Get microphone input
-            navigator.mediaDevices.getUserMedia({ audio: true })
-                .then(function(stream) {
-                    // Create audio source
-                    source = audioCtx.createMediaStreamSource(stream);
-
-                    // Initialize recorder
-                    recorder = new MediaRecorder(source.stream);
-
-                    // Start recording
-                    recorder.start();
-                    console.log('Recording...')
-                })
-                .catch(function(err) {
-                    console.log(err);
-                });
+        function handlerFunction(stream) {
+            rec = new MediaRecorder(stream);
+            rec.ondataavailable = e => {
+                audioChunks.push(e.data);
+                if (rec.state == "inactive") {
+                    let blob = new Blob(audioChunks, {type: 'audio/mpeg-3'});
+                    sendData(blob);
+                }
+            }
         }
 
-        function stopRecording() {
-            // Stop recording
-            recorder.stop();
-            console.log('Recording stopped');
-
-            // Handle data available event
-            recorder.addEventListener("dataavailable", function(event) {
-                var audio = document.getElementById("audio");
-                audio.src = URL.createObjectURL(event.data);
-                audio.play();
-
-                // Convert audio to text and send it to the backend
-                process_audio_to_text(audio);
+        function sendData(data) {
+            var form = new FormData();
+            form.append('file', data, 'data.mp3');
+            form.append('title', 'data.mp3');
+            //Chrome inspector shows that the post data includes a file and a title.
+            $.ajax({
+                type: 'POST',
+                url: '/audio',
+                data: form,
+                cache: false,
+                processData: false,
+                contentType: false
+            }).done(function(data) {
+                console.log(data);
+                // Get the input container element
+                document.getElementById("text_field").value = data;
             });
         }
+        
+        startRecording.onclick = e => {
+        console.log('Recording are started..');
+        startRecording.disabled = true;
+        stopRecording.disabled = false;
+        audioChunks = [];
+        rec.start();
+        };
 
-        function process_audio_to_text(audio) {
-        // Convert the audio file to a Blob object
-        var blob = new Blob([audio], {type: 'audio/wav'});
-        // Send the audio file to the backend
-        $.ajax({
-            url: '/audio',
-            type: 'POST',
-            data: blob,
-            processData: false,
-            contentType: false
-        }).done(function(response) {
-            console.log(response);
-            // Get the input container element
-            var inputContainer = $(".input-container");
-            // Create a new element to display the response text
-            var responseTextElement = $("<p>").text(response);
-            // Append the response text element to the input container
-            inputContainer.append(responseTextElement);
-          });
-        }
+        stopRecording.onclick = e => {
+            console.log("Recording are stopped.");
+            startRecording.disabled = false;
+            stopRecording.disabled = true;
+            rec.stop();
+        };
     </script>
   </body>
 </html>

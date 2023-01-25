@@ -6,7 +6,7 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 - flask
 - gpt-index
 - whisper `pip install git+https://github.com/openai/whisper.git`
-- gradio
+- 
 
 2. get OpenAI API key from [https://beta.openai.com/account/api-keys](https://beta.openai.com/account/api-keys)
 3. Put your data files into the directory /data for chatbot to read
@@ -18,13 +18,14 @@ This chatbot, inspired by ChatGPT, leverages the advanced language understanding
 
 ## Example of the chatbot compared to ChatGPT: The chatbot is able to answer about Monash DeepNeuron correctly
 ![ChatGPT_example](/assets/ChatGPT_example.png)
-![example](/assets/example.png)
 
-## use gradio for audio input
-![gradio](/assets/assets/audio_example.png)
 
 ## TODO
 - nice frontend, write js for more flexibility 
 - local GPT-2
 - use free embedding model
-- record conversation for future improvement
+- record conversation for future improvement, create a directory named chatlog
+- add demo
+- add config
+- refactor 
+- write this part again

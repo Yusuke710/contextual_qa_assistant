@@ -4,8 +4,9 @@ import os
 from datetime import date
 
 import whisper
+import tempfile
 
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, flash, redirect
 
 # this class loads context and respond to query
 # code based from https://github.com/jerryjliu/gpt_index
@@ -81,8 +82,8 @@ def handle_response():
     user_input = request.form["user_input"]
 
     # process the user's input and generate a response
-    #response = bot.query(user_input)
-    response = 'test test test'
+    response = bot.query(user_input)
+    #response = 'test test test'
     print(user_input)
     print(response)
 
@@ -100,18 +101,25 @@ def handle_response():
 @app.route("/audio", methods=["POST"])
 def handle_audio():
     # Get the audio file from the request
-    print(request.files["audio"])
-    audio_file = request.files["audio"]
+    # check if the post request has the file part
+    if "file" not in request.files:
+        flash("No file part")
+        return redirect(request.url)
+    audio_file = request.files["file"]
 
     # Save the audio file to disk
-    audio_file.save("audio.wav")
+    temp_dir = tempfile.mkdtemp()
+    save_path = os.path.join(temp_dir, "temp.wav")
+    audio_file.save(save_path)
 
     # Process the audio file to apply the whisper effect
-    text = audiobot.transcribe(audio_file)
-    print(text)
+    
+    text = audiobot.transcribe(save_path)
+    print(f"speech2text output: {text}")
 
     # Return the text as a response
-    return jsonify(text=text)
+    #return jsonify(text=text)
+    return text
 
 if __name__ == "__main__":
     app.run()
