@@ -1,0 +1,4 @@
+git+https://github.com/openai/whisper.git
+gpt-index
+langchain
+flask

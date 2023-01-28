@@ -47,39 +47,60 @@
       input[type="submit"]:hover {
         background-color: #45a049;
       }
-      /*
-      .start-button {
-        float: right;
-      }
-      .stop-button {
-        float: right;
-      }
-      */
     </style>
   </head>
   <body>
     <div class="container">
       <h1>Chatbot</h1>
-      <form action="{{ url_for('handle_response') }}" method="post">
+      <form>
         <div class="input-container">
-          <input type="text" name="user_input" id="text_field" placeholder="Enter your message here">
+          <input type="text" name="user_input" id="text_field" placeholder="Enter your message here or press the button below to record your input">
           
         </div>
-        <input type="submit" value="Send">
+        <input type="submit" id="submit_button" value="Send">
       </form>
-        <!--<button class="record-button" id="record-button">Record</button>-->
         <p>
           <button class="start-button" id="startRecording">Start recording</button>
           <button class="stop-button" id="stopRecording" disabled>Stop recording</button>
         </p>
       <div class="conversation">
-        <p>You: {{ user_input }}</p>
-        <p>Chatbot: {{ response }}</p>
+        <p>You: <span id="user_input"></span></p>
+        <p>Chatbot: <span id="response"></span></p>
       </div>
-      <!--<audio id="audio"></audio>-->
     </div>
     <script>
-    // https://github.com/duketemon/web-speech-recorder
+        document.getElementById("submit_button").addEventListener("click", submit_texts);
+
+        function submit_texts() {
+          var text = document.getElementById("text_field").value;
+          console.log("Text: " + text);
+          // to prevent the form from submitting and reloading the page
+          
+          event.preventDefault();
+          // Send text to the backend using jQuery.ajax
+          $.ajax({
+              type: "POST",
+              url: "/response",
+              data: JSON.stringify({ text: text }),
+              contentType: "application/json",
+              success: function (data_backend) {
+                  console.log("Success: " + data_backend["response"]);
+                  // write response into output element
+                  document.getElementById("user_input").innerHTML = text;
+                  document.getElementById("response").innerHTML = data_backend["response"];
+                  document.getElementById("text_field").value = "";
+
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                  console.log("Error: " + textStatus + " " + errorThrown);
+                  document.getElementById("user_input").innerHTML = text;
+                  document.getElementById("response").innerHTML = "Error: " + errorThrown;
+              }
+          });
+        }
+        
+
+        // https://github.com/duketemon/web-speech-recorder
         navigator
         .mediaDevices
         .getUserMedia({audio: true})
