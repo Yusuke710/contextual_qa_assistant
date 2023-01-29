@@ -7,11 +7,11 @@ llm_model: "text-davinci-003"
 # embedding model 
 embed_model: "text-embedding-ada-002"
 # max_input_size
-max_input_size: 3500
+max_input_size: 1000
 # num_output
-num_output: 300
+num_output: 200
 # text chunk
-chunk_size_limit: 1000
+chunk_size_limit: 300
 # overlap
 max_chunk_overlap: 0
 # top_k search
