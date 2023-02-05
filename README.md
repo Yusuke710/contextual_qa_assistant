@@ -16,5 +16,6 @@ You can get API key from [OpenAI](https://beta.openai.com/account/api-keys)
 - local GPT-2
 - use cuntom embedding model
 - record conversation in a better format
+- reduce the amount of times it refine response
 - typing feature similar to chatGPT, in this way user is easy to keep track of the output generated
 - add source of information, break up chunks using LLM
