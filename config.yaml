@@ -1,5 +1,8 @@
+# OpenAI
+OPENAI_API_KEY: ""
+
 # index file
-index_file: "data/index.json"
+index_file: "index.json"
 # whisper model size
 whisper_model: "base" 
 # LLM model 
@@ -11,7 +14,7 @@ max_input_size: 1000
 # num_output
 num_output: 200
 # text chunk
-chunk_size_limit: 300
+chunk_size_limit: 200
 # overlap
 max_chunk_overlap: 0
 # top_k search

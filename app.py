@@ -9,9 +9,14 @@ from flask import Flask, request, render_template, jsonify, flash, redirect
 from utils.chatbot import chatbot_gptindex
 from utils.speech2text import speech2text_whisper
 
+
 # read parameters from yaml
 with open(r'config.yaml') as file:
     config = yaml.load(file, Loader=yaml.FullLoader)
+
+# set your openai api
+os.environ["OPENAI_API_KEY"] = config["OPENAI_API_KEY"]
+
 # index file
 index_file = config["index_file"]
 # whisper model size
@@ -55,7 +60,6 @@ def handle_response():
 
     # process the user's input and generate a response
     response = chatbot.query(user_input)
-    #response = 'test test test'
     
     print(user_input)
     print(response)

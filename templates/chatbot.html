@@ -21,6 +21,7 @@
       h1 {
         text-align: center;
         margin-bottom: 30px;
+        font-size: 36px;
       }
       .input-container {
         display: flex;
@@ -33,6 +34,7 @@
         box-sizing: border-box;
         border: 2px solid #ccc;
         border-radius: 4px;
+        font-size: 20px;
       }
       input[type="submit"] {
         width: 100%;
@@ -43,10 +45,36 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
+        font-size: 20px;
       }
       input[type="submit"]:hover {
         background-color: #45a049;
       }
+      .start-button, .stop-button {
+        background: linear-gradient(to bottom, #4d90fe, #357ae8);
+        border: 1px solid #357ae8;
+        border-radius: 3px;
+        color: #fff;
+        cursor: pointer;
+        display: inline-block;
+        padding: 6px 12px;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        font-size: 20px;
+      }
+
+      .start-button:hover, .stop-button:hover {
+        background: #357ae8;
+        border: 1px solid #357ae8;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+      }
+
+      .start-button[disabled], .stop-button[disabled] {
+        background: #ddd;
+        border: 1px solid #ccc;
+        cursor: not-allowed;
+  }
     </style>
   </head>
   <body>
@@ -60,12 +88,16 @@
         <input type="submit" id="submit_button" value="Send">
       </form>
         <p>
-          <button class="start-button" id="startRecording">Start recording</button>
-          <button class="stop-button" id="stopRecording" disabled>Stop recording</button>
+          <button class="start-button" id="startRecording"><span>Start recording</span></button>
+          <button class="stop-button" id="stopRecording" disabled><span>Stop recording</span></button>
         </p>
       <div class="conversation">
         <p>You: <span id="user_input"></span></p>
         <p>Chatbot: <span id="response"></span></p>
+      </div>
+      
+      <div class="loading-icon" style="display: none;">
+        <img src="assets/loading.png" alt="Loading...">
       </div>
     </div>
     <script>
@@ -75,8 +107,11 @@
           var text = document.getElementById("text_field").value;
           console.log("Text: " + text);
           // to prevent the form from submitting and reloading the page
-          
           event.preventDefault();
+
+          // Show the loading icon
+          $(".loading-icon").show();
+
           // Send text to the backend using jQuery.ajax
           $.ajax({
               type: "POST",
@@ -89,12 +124,16 @@
                   document.getElementById("user_input").innerHTML = text;
                   document.getElementById("response").innerHTML = data_backend["response"];
                   document.getElementById("text_field").value = "";
+                  // Hide the loading icon
+                  $(".loading-icon").hide();
 
               },
               error: function (jqXHR, textStatus, errorThrown) {
                   console.log("Error: " + textStatus + " " + errorThrown);
                   document.getElementById("user_input").innerHTML = text;
                   document.getElementById("response").innerHTML = "Error: " + errorThrown;
+                  // Hide the loading icon
+                  $(".loading-icon").hide();
               }
           });
         }
@@ -121,6 +160,10 @@
             var form = new FormData();
             form.append('file', data, 'data.mp3');
             form.append('title', 'data.mp3');
+
+            // Show the loading icon
+            $(".loading-icon").show();
+
             //Chrome inspector shows that the post data includes a file and a title.
             $.ajax({
                 type: 'POST',
@@ -133,6 +176,8 @@
                 console.log(data);
                 // Get the input container element
                 document.getElementById("text_field").value = data;
+                // Hide the loading icon
+                $(".loading-icon").hide();
             });
         }
         

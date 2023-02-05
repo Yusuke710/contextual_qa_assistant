@@ -46,12 +46,4 @@ class chatbot_gptindex:
             self.index.save_to_disk(self.index_file)
     
     def query(self, user_input):
-        return self.index.query(user_input, similarity_top_k = self.similarity_top_k, verbose=True)
-
-'''
-# test
-user_input = "What is DeepNeuron?"
-bot = chatbot_gptindex("data/index.json", "text-davinci-003", "text-embedding-ada-002", 3000, 200, 500, 0, 2)
-response = bot.query(user_input)
-print(response)
-'''
+        return self.index.query(user_input, mode="embedding", similarity_top_k = self.similarity_top_k, verbose=True)

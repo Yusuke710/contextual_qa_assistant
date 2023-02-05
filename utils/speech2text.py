@@ -7,7 +7,6 @@ class speech2text_whisper:
         self.model = whisper.load_model(model_size)
 
     def transcribe(self, audio_file):
-    #time.sleep(3)
     # load audio and pad/trim it to fit 30 seconds
         self.audio = whisper.load_audio(audio_file)
         self.audio = whisper.pad_or_trim(self.audio)
