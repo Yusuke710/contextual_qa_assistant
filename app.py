@@ -71,7 +71,7 @@ def handle_response():
         # if the directory is not present then create it.
         os.makedirs(file_path)
     with open(os.path.join(file_path, str(filename) + ".txt"), "a+") as f:
-        f.write(user_input)
+        f.write("Q: " + user_input)
         f.write(str(response))
         f.write("\n")
 

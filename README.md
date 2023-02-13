@@ -15,7 +15,14 @@ You can get API key from [OpenAI](https://beta.openai.com/account/api-keys)
 ## TODO
 - local GPT-2
 - use cuntom embedding model
+
+
 - record conversation in a better format
-- reduce the amount of times it refine response
+- reduce the amount of times it refine response, too much loading time and money!!
+https://github.com/jerryjliu/gpt_index/blob/becde98138295aa20d8664d5c26ec4cba433b814/gpt_index/indices/response/builder.py
+add 2 breaks to only get initial response. Refinement of response diverges from optimal answer
+read from text_chunks instead of text_chunk
 - typing feature similar to chatGPT, in this way user is easy to keep track of the output generated
 - add source of information, break up chunks using LLM
+- deploy it on AWS instance and access it using ssh
+- People scan QR code and it leads to the website. Use this https://www.qr-code-generator.com/solutions/static-url-qr-code/ 
